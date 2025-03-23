@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تسجيل الدخول</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            background-color: #ebecec;
+            color: rgb(11, 11, 11);
+            padding: 50px;
+            text-align: right;
+            position: relative;
+        }
+        .header img {
+            height: 25px;
+            position: absolute;
+            top: 25px;
+            right: 15px;
+        }
+        .header nav {
+            margin-top: 10px;
+        }
+        .header a {
+            color: rgb(3, 3, 3);
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 14px;
+        }
+        .header a:hover {
+            text-decoration: underline;
+        }
+        .login-container {
+            background-color: white;
+            margin: 50px auto;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            text-align: center;
+            position: relative;
+        }
+        .login-container h2 {
+            color: #2a2a2a;
+            margin-bottom: 20px;
+        }
+        .login-container .icon {
+            width: 80px;
+            height: 80px;
+            background-color: #fef3f3;
+            border-radius: 50%;
+            margin: 0 auto 20px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .login-container .icon img {
+            width: 50px;
+            height: 50px;
+        }
+        .login-container label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+            font-weight: bold;
+        }
+        .login-container input[type="text"],
+        .login-container input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .login-container button {
+            width: 25%;
+            padding: 10px;
+            background-color: #085e5a;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .login-container button:hover {
+            background-color: #333;
+        }
+        .login-container a {
+            display: block;
+            text-align: center;
+            margin-top: 10px;
+            color: #006400;
+            text-decoration: none;
+        }
+        .login-container a:hover {
+            text-decoration: underline;
+        }
+        .footer {
+            background-color: #085e5a;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+        .footer img {
+            height: 50px;
+            margin-bottom: 10px;
+        }
+        .footer .footer-links {
+            margin-top: 10px;
+        }
+        .footer .footer-links a {
+            color: white;
+            margin: 0 10px;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .footer .footer-links a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="Logo.jpg" alt="شعار جامعة أم القرى">
+        
+        <nav>
+            <a href="https://uqu.edu.sa/about">عن الجامعة</a>
+            <a href="https://uqu.edu.sa/administration">إدارة الجامعة</a>
+            <a href="https://uqu.edu.sa/colleges">الكليات</a>
+            <a href="">القبول</a>
+            <a href="https://uqu.edu.sa/research">البحث والابتكار</a>
+            <a href=" ">الخدمات الإلكترونية</a>
+        </nav>
+    </div>
+
+    <div class="login-container">
+        <div class="icon">
+            <img src="alogo.png" alt="أيقونة المستخدم">
+        </div>
+        <h2>تسجيل الدخول</h2>
+        <form id="loginForm">
+            <label for="username">البريد الإلكتروني</label>
+            <input type="text" id="username" placeholder="username@uqu.edu.sa" required>
+
+            <label for="password">كلمة المرور</label>
+            <input type="password" id="password" placeholder="كلمة المرور" required>
+
+            <button type="button" onclick="login()">دخول</button>
+        </form>
+        <a href="https://uqu.edu.sa/forgot-password">نسيت معلومات الدخول الخاصة بي؟</a>
+        <a href="https://uqu.edu.sa/email-inquiry">الاستعلام عن البريد الإلكتروني</a>
+        <a href="https://uqu.edu.sa/sso-guide">شرح تسجيل الدخول الموحد</a>
+    </div>
+
+    <div class="footer">
+        <p>جميع الحقوق محفوظة &copy; جامعة أم القرى</p>
+        <div class="footer-links">
+            <a href="https://uqu.edu.sa/privacy-policy">سياسة الخصوصية</a>
+            <a href="https://uqu.edu.sa/contact-center">مركز الاتصال</a>
+            <a href="https://uqu.edu.sa/mobile-apps">تطبيقات الجوال</a>
+        </div>
+    </div>
+    <script>
+        // حفظ بيانات المستخدم لاختبار الدخول
+        localStorage.setItem('username', 'jameelah@uqu.edu.sa');
+        localStorage.setItem('password', 'ja499065862');
+    
+        function login() {
+            const enteredUsername = document.getElementById('username').value;
+            const enteredPassword = document.getElementById('password').value;
+    
+            const storedUsername = localStorage.getItem('username');
+            const storedPassword = localStorage.getItem('password');
+    
+            // التحقق من صحة اسم المستخدم وكلمة المرور
+            if (enteredUsername === storedUsername && enteredPassword === storedPassword) {
+                alert('تم تسجيل الدخول بنجاح');
+                // تحويل الطالب إلى صفحة st.html بعد التحقق الناجح
+                window.location.href = "banner.html";
+            } else {
+                alert('خطأ في اسم المستخدم أو كلمة المرور');
+            }
+        }
+    </script>
+     
